@@ -1,21 +1,48 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<form [formGroup]="myForm" class="myForm">
+  <div class="form-group row">
+    <label for="firstName" class="col-sm-2 col-form-label">First Name*</label>
+    <div class="col-sm-4">
+      <input formControlName="firstName" class="form-control" id="firstName" placeholder="First Name">
+    </div>
+  </div>
 
-<router-outlet></router-outlet>
+  <div class="form-group row">
+    <label for="lastName" class="col-sm-2 col-form-label">Last Name*</label>
+    <div class="col-sm-4">
+      <input formControlName="lastName" class="form-control" id="lastName" placeholder="Last Name">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="height" class="col-sm-2 col-form-label">Height*</label>
+    <div class="col-sm-4">
+      <input type="number" formControlName="height" class="form-control" id="height" placeholder="Height">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="email" class="col-sm-2 col-form-label">Email*</label>
+    <div class="col-sm-4">
+      <input formControlName="email" required class="form-control" id="email" placeholder="Email">
+    </div>
+    <div class="col-sm-4"><span *ngIf="myForm.controls.email.invalid && myForm.controls.email.touched">
+        Your email does not look right
+      </span></div>
+  </div>
+
+  <div class="form-group row">
+    <label for="leftEyePower" class="col-sm-2 col-form-label">Left Eye Power*</label>
+    <div class="col-sm-4">
+      <input type="number" formControlName="leftEyePower" (change)="updateValidators()" class="form-control" id="leftEyePower"
+        placeholder="Left Eye Power">
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="rightEyePower" class="col-sm-2 col-form-label">Right Eye Power*</label>
+    <div class="col-sm-4">
+      <input type="number" formControlName="rightEyePower" class="form-control" id="rightEyePower"
+        placeholder="Right Eye Power">
+    </div>
+  </div>
+  <button [disabled]="myForm.invalid" (click)="onSubmit()">Submit</button>
+</form>
