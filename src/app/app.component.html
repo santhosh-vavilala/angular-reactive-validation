@@ -32,8 +32,8 @@
   <div class="form-group row">
     <label for="leftEyePower" class="col-sm-2 col-form-label">Left Eye Power*</label>
     <div class="col-sm-4">
-      <input type="number" formControlName="leftEyePower" (change)="updateValidators()" class="form-control" id="leftEyePower"
-        placeholder="Left Eye Power">
+      <input type="number" formControlName="leftEyePower" (change)="updateValidators()" class="form-control"
+        id="leftEyePower" placeholder="Left Eye Power">
     </div>
   </div>
 
@@ -46,6 +46,20 @@
     <div class="col-sm-4"><span *ngIf="myForm.controls.rightEyePower.invalid && myForm.controls.rightEyePower.touched">
         Right eye power should be greater than Left eye power.
       </span></div>
+  </div>
+
+  <div class="row">
+    <label for="" class="col-sm-2 col-form-label">States*</label>
+    <div class="states" *ngFor="let state of statesArray; let i=index">
+      <div class="row">
+        <div class="col-sm-12">
+          <label>
+            <input type="radio" [value]="state" formControlName="state">
+            <span>{{state}}</span>
+          </label>
+        </div>
+      </div>
+    </div><br>
   </div>
   <button [disabled]="myForm.invalid" (click)="onSubmit()">Submit</button>
 </form>

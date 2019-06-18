@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 })
 export class AppComponent {
   title = 'angular-reactive';
-
+  statesArray = ['Telangana', 'Andhra Pradesh', 'Kerala', 'Tamilnadu', 'Karnataka']
   myForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
@@ -21,6 +21,7 @@ export class AppComponent {
       email: ['', [Validators.required, Validators.email]],
       leftEyePower: ['', Validators.required],
       rightEyePower: ['', Validators.required],
+      state: ['', Validators.required]
     });
     this.updateValidators();
   }
