@@ -43,6 +43,9 @@
       <input type="number" formControlName="rightEyePower" class="form-control" id="rightEyePower"
         placeholder="Right Eye Power">
     </div>
+    <div class="col-sm-4"><span *ngIf="myForm.controls.rightEyePower.invalid && myForm.controls.rightEyePower.touched">
+        Right eye power should be greater than Left eye power.
+      </span></div>
   </div>
   <button [disabled]="myForm.invalid" (click)="onSubmit()">Submit</button>
 </form>
