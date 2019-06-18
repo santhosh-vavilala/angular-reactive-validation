@@ -61,5 +61,10 @@
       </div>
     </div><br>
   </div>
-  <button [disabled]="myForm.invalid" (click)="onSubmit()">Submit</button>
+  <div>
+    <button [disabled]="myForm.invalid" (click)="onSubmit()">Submit</button>
+  </div>
+  <br>
+  <label>From Value: </label>
+  <div>{{myForm.value | json}}</div>
 </form>
